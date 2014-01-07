@@ -119,9 +119,9 @@ static char UIScrollViewPullToRefreshView;
     
     if(!showsPullToRefresh) {
         if (self.pullToRefreshView.isObserving) {
-            [self removeObserver:self.pullToRefreshView forKeyPath:@"contentOffset"];
-            [self removeObserver:self.pullToRefreshView forKeyPath:@"contentSize"];
-            [self removeObserver:self.pullToRefreshView forKeyPath:@"frame"];
+            [self removeObserver:self.pullToRefreshView forKeyPath:@"contentOffset" context:nil];
+            [self removeObserver:self.pullToRefreshView forKeyPath:@"contentSize" context:nil];
+            [self removeObserver:self.pullToRefreshView forKeyPath:@"frame" context:nil];
             [self.pullToRefreshView resetScrollViewContentInset];
             self.pullToRefreshView.isObserving = NO;
         }
@@ -200,9 +200,9 @@ static char UIScrollViewPullToRefreshView;
         if (scrollView.showsPullToRefresh) {
             if (self.isObserving) {
                 //If enter this branch, it is the moment just before "SVPullToRefreshView's dealloc", so remove observer here
-                [scrollView removeObserver:self forKeyPath:@"contentOffset"];
-                [scrollView removeObserver:self forKeyPath:@"contentSize"];
-                [scrollView removeObserver:self forKeyPath:@"frame"];
+                [scrollView removeObserver:self forKeyPath:@"contentOffset" context:nil];
+                [scrollView removeObserver:self forKeyPath:@"contentSize" context:nil];
+                [scrollView removeObserver:self forKeyPath:@"frame" context:nil];
                 self.isObserving = NO;
             }
         }
